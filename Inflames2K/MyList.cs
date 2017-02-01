@@ -107,35 +107,14 @@ namespace Inflames2K
 		//---------------------------------------------------------------------
 		public bool Remove(T value)
 		{
-			int index = this.IndexOf(value);
-
-			if (index < 0) return false;
-
-			this.RemoveAt(index);
-
-			return true;
+			ListItem<T> item = this.GetItemInternal(value);
+			return this.RemoveInternal(item);
 		}
 		//---------------------------------------------------------------------
 		public void RemoveAt(int index)
 		{
-			ListItem<T> current = this.GetItemInternal(index);
-
-			if (current == null) return;
-
-			if (current.Previous == null)
-				current.Next.Previous = null;
-			else
-			{
-				current.Previous.Next = current.Next;
-
-				if (current.Next != null)
-					current.Next.Previous = current.Previous;
-			}
-
-			if (current == _first) _first = current.Next;
-			if (current == _last)  _last  = current.Previous;
-
-			_count--;
+			ListItem<T> item = this.GetItemInternal(index);
+			this.RemoveInternal(item);
 		}
 		//---------------------------------------------------------------------
 		IEnumerator IEnumerable.GetEnumerator() => this.GetEnumerator();
@@ -153,6 +132,36 @@ namespace Inflames2K
 			}
 
 			return current;
+		}
+		//---------------------------------------------------------------------
+		private ListItem<T> GetItemInternal(T item)
+		{
+			for (ListItem<T> current = _first; current != null; current = current.Next)
+				if (object.Equals(current.Value, item)) return current;
+
+			return null;
+		}
+		//---------------------------------------------------------------------
+		private bool RemoveInternal(ListItem<T> item)
+		{
+			if (item == null) return false;
+
+			if (item.Previous == null)
+				item.Next.Previous = null;
+			else
+			{
+				item.Previous.Next = item.Next;
+
+				if (item.Next != null)
+					item.Next.Previous = item.Previous;
+			}
+
+			if (item == _first) _first = item.Next;
+			if (item == _last)  _last  = item.Previous;
+
+			_count--;
+
+			return true;
 		}
 	}
 }
