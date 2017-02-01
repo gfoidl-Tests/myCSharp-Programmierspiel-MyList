@@ -54,7 +54,7 @@ namespace Inflames2K
 		public void Clear()
 		{
 			_first = null;
-			_last = null;
+			_last  = null;
 			_count = 0;
 		}
 		//---------------------------------------------------------------------
@@ -62,13 +62,8 @@ namespace Inflames2K
 		//---------------------------------------------------------------------
 		public void CopyTo(T[] array, int arrayIndex)
 		{
-			ListItem<T> current = _first;
-
-			while (current != null)
-			{
+			for (var current = _first; current != null; current = current.Next)
 				array[arrayIndex++] = current.Value;
-				current = current.Next;
-			}
 		}
 		//---------------------------------------------------------------------
 		public IEnumerator<T> GetEnumerator()
@@ -84,7 +79,7 @@ namespace Inflames2K
 
 			while (current != null)
 			{
-				if (current.Value.Equals(item)) return index;
+				if (object.Equals(current.Value, item)) return index;
 				index++;
 				current = current.Next;
 			}

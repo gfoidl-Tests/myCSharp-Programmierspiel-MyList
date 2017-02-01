@@ -42,5 +42,19 @@ namespace Inflames2K.Tests.MyListTests
 
 			Assert.AreEqual(-1, actual);
 		}
+		//---------------------------------------------------------------------
+		[Test]
+		public void Item_is_null___returns_index()
+		{
+			var sut = new MyList<object>();
+			sut.Add(new object());
+			sut.Add(null);
+
+			Assume.That(sut.Count, Is.EqualTo(2));
+
+			int actual = sut.IndexOf(null);
+
+			Assert.AreEqual(1, actual);
+		}
 	}
 }
