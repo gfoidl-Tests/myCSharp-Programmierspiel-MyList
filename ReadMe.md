@@ -1,3 +1,6 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/mjxnts4amdl27o3o?svg=true)](https://ci.appveyor.com/project/GntherFoidl/mycsharp-programmierspiel-mylist)
+
+
 # Aufgabe
 
 Implementiere eine Listen-Klasse, die das folgende Interface implementiert:
