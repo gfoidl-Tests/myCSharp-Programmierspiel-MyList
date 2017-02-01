@@ -73,7 +73,8 @@ namespace Inflames2K
 		//---------------------------------------------------------------------
 		public IEnumerator<T> GetEnumerator()
 		{
-			return new MyListEnumerator<T>(_first);
+			for (var current = _first; current != null; current = current.Next)
+				yield return current.Value;
 		}
 		//---------------------------------------------------------------------
 		public int IndexOf(T item)

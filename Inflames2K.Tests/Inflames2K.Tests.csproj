@@ -45,14 +45,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ListItemTests\Ctor.cs" />
-    <Compile Include="MyListEnumeratorTests\Ctor.cs" />
-    <Compile Include="MyListEnumeratorTests\MoveNext.cs" />
-    <Compile Include="MyListEnumeratorTests\Reset.cs" />
     <Compile Include="MyListTests\Add.cs" />
     <Compile Include="MyListTests\Clear.cs" />
     <Compile Include="MyListTests\Contains.cs" />
     <Compile Include="MyListTests\CopyTo.cs" />
     <Compile Include="MyListTests\Ctor.cs" />
+    <Compile Include="MyListTests\GetEnumerator.cs" />
     <Compile Include="MyListTests\Indexer.cs" />
     <Compile Include="MyListTests\IndexOf.cs" />
     <Compile Include="MyListTests\Insert.cs" />
