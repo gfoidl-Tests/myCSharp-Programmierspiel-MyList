@@ -1,4 +1,6 @@
-﻿using System;
+﻿//#define ELEPHANT
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -129,6 +131,7 @@ namespace Inflames2K
 		{
 			ListItem<T> current = _head.Next;
 			int index 			= 0;
+#if ELEPHANT
 			T tailValue 		= _tail.Value;
 			_tail.Value 		= item;
 
@@ -143,7 +146,11 @@ namespace Inflames2K
 
 			if (current != _tail)
 				return Tuple.Create(current, index);
-
+#else
+			for (; current != _tail; current = current.Next, ++index)
+				if (object.Equals(current.Value, item))
+					return Tuple.Create(current, index);
+#endif
 			return Tuple.Create(null as ListItem<T>, -1);
 		}
 		//---------------------------------------------------------------------
