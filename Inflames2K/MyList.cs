@@ -6,9 +6,19 @@ namespace Inflames2K
 {
 	public class MyList<T> : IList<T>
 	{
-		private ListItem<T> _first;
-		private ListItem<T> _last;
-		private int 		_count = 0;
+		private ListItem<T> _head;
+		private ListItem<T> _tail;
+		private int 		_count;
+		//---------------------------------------------------------------------
+		public MyList()
+		{
+			_head = new ListItem<T>(default(T));
+			_tail = new ListItem<T>(default(T));
+
+			_head.Next 	   = _tail;
+			_tail.Previous = _head;
+			_count 		   = 0;
+		}
 		//---------------------------------------------------------------------
 		public T this[int index]
 		{
@@ -33,51 +43,41 @@ namespace Inflames2K
 			// null as value is allowed -> consumer has to handle this
 			ListItem<T> item = new ListItem<T>(value);
 
-			if (_last != null)
-			{
-				_last.Next = item;
-				item.Previous = _last;
-				_last = item;
-			}
-			else
-			{
-				_last = item;
-				item.Previous = _first;
-			}
-
-			if (_first == null)
-				_first = item;
+			item.Previous 		= _tail.Previous;
+			item.Next 			= _tail;
+			_tail.Previous.Next = item;
+			_tail.Previous 		= item;
 
 			_count++;
 		}
 		//---------------------------------------------------------------------
 		public void Clear()
 		{
-			_first = null;
-			_last  = null;
-			_count = 0;
+			_head.Next 	   = _tail;
+			_tail.Previous = _head;
+			_count 		   = 0;
 		}
 		//---------------------------------------------------------------------
 		public bool Contains(T item) => this.IndexOf(item) >= 0;
 		//---------------------------------------------------------------------
 		public void CopyTo(T[] array, int arrayIndex)
 		{
-			for (var current = _first; current != null; current = current.Next)
+			for (var current = _head.Next; current != _tail; current = current.Next)
 				array[arrayIndex++] = current.Value;
 		}
 		//---------------------------------------------------------------------
 		public IEnumerator<T> GetEnumerator()
 		{
-			for (var current = _first; current != null; current = current.Next)
+			for (var current = _head.Next; current != _tail; current = current.Next)
 				yield return current.Value;
 		}
 		//---------------------------------------------------------------------
 		public int IndexOf(T item)
 		{
-			ListItem<T> current = _first;
+			ListItem<T> current = _head.Next;
 			int index 			= 0;
 
-			while (current != null)
+			while (current != _tail)
 			{
 				if (object.Equals(current.Value, item)) return index;
 				index++;
@@ -123,11 +123,11 @@ namespace Inflames2K
 		{
 			if (index < 0 || index >= _count) throw new ArgumentOutOfRangeException(nameof(index));
 
-			ListItem<T> current = _first;
+			ListItem<T> current = _head.Next;
 
 			for (int i = 0; i < index; ++i)
 			{
-				if (current?.Next == null) return null;
+				if (current?.Next == _tail) return null;
 				current = current.Next;
 			}
 
@@ -136,7 +136,7 @@ namespace Inflames2K
 		//---------------------------------------------------------------------
 		private ListItem<T> GetItemInternal(T item)
 		{
-			for (ListItem<T> current = _first; current != null; current = current.Next)
+			for (ListItem<T> current = _head.Next; current != _tail; current = current.Next)
 				if (object.Equals(current.Value, item)) return current;
 
 			return null;
@@ -146,19 +146,8 @@ namespace Inflames2K
 		{
 			if (item == null) return false;
 
-			if (item.Previous == null)
-				item.Next.Previous = null;
-			else
-			{
-				item.Previous.Next = item.Next;
-
-				if (item.Next != null)
-					item.Next.Previous = item.Previous;
-			}
-
-			if (item == _first) _first = item.Next;
-			if (item == _last)  _last  = item.Previous;
-
+			item.Previous.Next = item.Next;
+			item.Next.Previous = item.Previous;
 			_count--;
 
 			return true;
