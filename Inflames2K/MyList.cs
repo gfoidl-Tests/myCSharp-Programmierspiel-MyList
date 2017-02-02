@@ -36,10 +36,7 @@ namespace Inflames2K
 		//---------------------------------------------------------------------
 		public bool IsReadOnly { get; } = false;
 		//---------------------------------------------------------------------
-		public void Add(T value)
-		{
-			this.InsertInternal(value, _tail);	
-		}		
+		public void Add(T value) => this.InsertInternal(value, _tail);	
 		//---------------------------------------------------------------------
 		public void Clear()
 		{
@@ -62,10 +59,7 @@ namespace Inflames2K
 				yield return current.Value;
 		}
 		//---------------------------------------------------------------------
-		public int IndexOf(T item)
-		{
-			return this.GetItemInternal(item).Item2;
-		}
+		public int IndexOf(T item) => this.GetItemInternal(item).Item2;
 		//---------------------------------------------------------------------
 		public void Insert(int index, T value)
 		{
