@@ -116,10 +116,7 @@ namespace Inflames2K
 			ListItem<T> current = _head.Next;
 
 			for (int i = 0; i < index; ++i)
-			{
-				if (current.Next == _tail) return null;
 				current = current.Next;
-			}
 
 			return current;
 		}
