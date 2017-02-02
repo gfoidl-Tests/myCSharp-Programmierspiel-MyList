@@ -111,10 +111,22 @@ namespace Inflames2K
 		{
 			if (index < 0 || index >= _count) throw new ArgumentOutOfRangeException(nameof(index));
 
-			ListItem<T> current = _head.Next;
+			ListItem<T> current = null;
 
-			for (int i = 0; i < index; ++i)
-				current = current.Next;
+			if (index < _count / 2)
+			{
+				current = _head.Next;
+
+				for (int i = 0; i < index; ++i)
+					current = current.Next;
+			}
+			else
+			{
+				current = _tail.Previous;
+
+				for (int i = _count - 1; i > index; --i)
+					current = current.Previous;
+			}
 
 			return current;
 		}
