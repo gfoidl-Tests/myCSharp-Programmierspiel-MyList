@@ -15,9 +15,7 @@ namespace Inflames2K
 			_head = new ListItem<T>(default(T));
 			_tail = new ListItem<T>(default(T));
 
-			_head.Next 	   = _tail;
-			_tail.Previous = _head;
-			_count 		   = 0;
+			this.Clear();
 		}
 		//---------------------------------------------------------------------
 		public T this[int index]
