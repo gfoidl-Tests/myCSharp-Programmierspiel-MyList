@@ -40,16 +40,8 @@ namespace Inflames2K
 		//---------------------------------------------------------------------
 		public void Add(T value)
 		{
-			// null as value is allowed -> consumer has to handle this
-			ListItem<T> item = new ListItem<T>(value);
-
-			item.Previous 		= _tail.Previous;
-			item.Next 			= _tail;
-			_tail.Previous.Next = item;
-			_tail.Previous 		= item;
-
-			_count++;
-		}
+			this.InsertInternal(value, _tail);	
+		}		
 		//---------------------------------------------------------------------
 		public void Clear()
 		{
@@ -74,40 +66,24 @@ namespace Inflames2K
 		//---------------------------------------------------------------------
 		public int IndexOf(T item)
 		{
-			ListItem<T> current = _head.Next;
-			int index 			= 0;
-
-			while (current != _tail)
-			{
-				if (object.Equals(current.Value, item)) return index;
-				index++;
-				current = current.Next;
-			}
-
-			return -1;
+			return this.GetItemInternal(item).Item2;
 		}
 		//---------------------------------------------------------------------
 		public void Insert(int index, T value)
 		{
-			if ((_count == 0 && index == 0) || (_count == index))
-			{
-				this.Add(value);
-				return;
-			}
+			ListItem<T> rightElement = null;
 
-			ListItem<T> item 	 = this.GetItemInternal(index);
-			ListItem<T> toInsert = new ListItem<T>(value);
+			if ((_count == 0 && index == 0) || (index == _count))
+				rightElement = _tail;
+			else
+				rightElement = this.GetItemInternal(index);
 
-			item.Previous.Next = toInsert;
-			toInsert.Previous  = item.Previous;
-			item.Previous 	   = toInsert;
-			toInsert.Next 	   = item;
-			_count++;
+			this.InsertInternal(value, rightElement);
 		}
 		//---------------------------------------------------------------------
 		public bool Remove(T value)
 		{
-			ListItem<T> item = this.GetItemInternal(value);
+			ListItem<T> item = this.GetItemInternal(value).Item1;
 			return this.RemoveInternal(item);
 		}
 		//---------------------------------------------------------------------
@@ -119,6 +95,20 @@ namespace Inflames2K
 		//---------------------------------------------------------------------
 		IEnumerator IEnumerable.GetEnumerator() => this.GetEnumerator();
 		//---------------------------------------------------------------------
+		#region Private Members
+		private void InsertInternal(T value, ListItem<T> rightElement)
+		{
+			// null as value is allowed -> consumer has to handle this
+			ListItem<T> toInsert = new ListItem<T>(value);
+
+			toInsert.Previous 		   = rightElement.Previous;
+			toInsert.Next 			   = rightElement;
+			rightElement.Previous.Next = toInsert;
+			rightElement.Previous 	   = toInsert;
+
+			_count++;
+		}
+		//---------------------------------------------------------------------
 		private ListItem<T> GetItemInternal(int index)
 		{
 			if (index < 0 || index >= _count) throw new ArgumentOutOfRangeException(nameof(index));
@@ -127,19 +117,33 @@ namespace Inflames2K
 
 			for (int i = 0; i < index; ++i)
 			{
-				if (current?.Next == _tail) return null;
+				if (current.Next == _tail) return null;
 				current = current.Next;
 			}
 
 			return current;
 		}
 		//---------------------------------------------------------------------
-		private ListItem<T> GetItemInternal(T item)
+		private Tuple<ListItem<T>, int> GetItemInternal(T item)
 		{
-			for (ListItem<T> current = _head.Next; current != _tail; current = current.Next)
-				if (object.Equals(current.Value, item)) return current;
+			ListItem<T> current = _head.Next;
+			int index 			= 0;
+			T tailValue 		= _tail.Value;
+			_tail.Value 		= item;
 
-			return null;
+			while (true)
+			{
+				if (object.Equals(current.Value, item)) break;
+				index++;
+				current = current.Next;
+			}
+
+			_tail.Value = tailValue;
+
+			if (current != _tail)
+				return Tuple.Create(current, index);
+
+			return Tuple.Create(null as ListItem<T>, -1);
 		}
 		//---------------------------------------------------------------------
 		private bool RemoveInternal(ListItem<T> item)
@@ -152,5 +156,6 @@ namespace Inflames2K
 
 			return true;
 		}
+		#endregion
 	}
 }
