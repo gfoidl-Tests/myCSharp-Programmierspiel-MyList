@@ -65,7 +65,7 @@ namespace Inflames2K
 		{
 			ListItem<T> rightElement = null;
 
-			if ((_count == 0 && index == 0) || (index == _count))
+			if (index == _count)
 				rightElement = _tail;
 			else
 				rightElement = this.GetItemInternal(index);
