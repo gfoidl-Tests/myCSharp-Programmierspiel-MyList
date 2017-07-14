@@ -13,6 +13,7 @@
 // TODO: reference additional headers your program requires here
 
 #include "ListItem.h"
+#include "MyList.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 using namespace Inflames2K;

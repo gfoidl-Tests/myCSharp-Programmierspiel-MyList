@@ -11,5 +11,13 @@ namespace Inflames2KNativeTests
 
 			Assert::AreEqual(42, sut.Value);
 		}
+		//---------------------------------------------------------------------
+		TEST_METHOD(Value_given___Next_and_Previous_are_NULL)
+		{
+			ListItem<int> sut(42);
+
+			Assert::IsNull(sut.Next);
+			Assert::IsNull(sut.Previous);
+		}
 	};
 }
