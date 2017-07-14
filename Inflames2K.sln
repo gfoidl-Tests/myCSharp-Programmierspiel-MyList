@@ -1,11 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.15
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inflames2K", "Inflames2K\Inflames2K.csproj", "{B54F6A3A-A5E9-4F95-B9A1-256709B56EF2}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "source", "source", "{C887BB8A-F3E4-42B6-9AAB-CCBCADBFAE01}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inflames2K.Tests", "Inflames2K.Tests\Inflames2K.Tests.csproj", "{6A19A3B7-5F90-4D7D-A31C-6734E53FC475}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inflames2K", "source\Inflames2K\Inflames2K.csproj", "{B54F6A3A-A5E9-4F95-B9A1-256709B56EF2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{0DA22130-C56A-42A0-91C1-11197DBF8ED3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inflames2K.Tests", "tests\Inflames2K.Tests\Inflames2K.Tests.csproj", "{6A19A3B7-5F90-4D7D-A31C-6734E53FC475}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,5 +28,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B54F6A3A-A5E9-4F95-B9A1-256709B56EF2} = {C887BB8A-F3E4-42B6-9AAB-CCBCADBFAE01}
+		{6A19A3B7-5F90-4D7D-A31C-6734E53FC475} = {0DA22130-C56A-42A0-91C1-11197DBF8ED3}
 	EndGlobalSection
 EndGlobal

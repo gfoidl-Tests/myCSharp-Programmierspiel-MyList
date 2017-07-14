@@ -55,7 +55,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Inflames2K\Inflames2K.csproj">
+    <ProjectReference Include="..\..\source\Inflames2K\Inflames2K.csproj">
       <Project>{b54f6a3a-a5e9-4f95-b9a1-256709b56ef2}</Project>
       <Name>Inflames2K</Name>
     </ProjectReference>
