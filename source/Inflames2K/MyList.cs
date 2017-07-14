@@ -38,7 +38,7 @@ namespace Inflames2K
 		//---------------------------------------------------------------------
 		public bool IsReadOnly { get; } = false;
 		//---------------------------------------------------------------------
-		public void Add(T value) => this.InsertInternal(value, _tail);	
+		public void Add(T value) => this.InsertInternal(value, _tail);
 		//---------------------------------------------------------------------
 		public void Clear()
 		{
@@ -61,7 +61,7 @@ namespace Inflames2K
 				yield return current.Value;
 		}
 		//---------------------------------------------------------------------
-		public int IndexOf(T item) => this.GetItemInternal(item).Item2;
+		public int IndexOf(T item) => this.GetItemInternal(item).Index;
 		//---------------------------------------------------------------------
 		public void Insert(int index, T value)
 		{
@@ -77,7 +77,7 @@ namespace Inflames2K
 		//---------------------------------------------------------------------
 		public bool Remove(T value)
 		{
-			ListItem<T> item = this.GetItemInternal(value).Item1;
+			ListItem<T> item = this.GetItemInternal(value).Item;
 			return this.RemoveInternal(item);
 		}
 		//---------------------------------------------------------------------
@@ -127,7 +127,7 @@ namespace Inflames2K
 			return current;
 		}
 		//---------------------------------------------------------------------
-		private Tuple<ListItem<T>, int> GetItemInternal(T item)
+		private (ListItem<T> Item, int Index) GetItemInternal(T item)
 		{
 			ListItem<T> current = _head.Next;
 			int index 			= 0;
@@ -145,13 +145,13 @@ namespace Inflames2K
 			_tail.Value = tailValue;
 
 			if (current != _tail)
-				return Tuple.Create(current, index);
+				return (current, index);
 #else
 			for (; current != _tail; current = current.Next, ++index)
 				if (object.Equals(current.Value, item))
-					return Tuple.Create(current, index);
+					return (current, index);
 #endif
-			return Tuple.Create(null as ListItem<T>, -1);
+			return (null as ListItem<T>, -1);
 		}
 		//---------------------------------------------------------------------
 		private bool RemoveInternal(ListItem<T> item)
