@@ -152,7 +152,18 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Ctor.cpp" />
+    <ClCompile Include="ListItem.Ctor.cpp" />
+    <ClCompile Include="MyList.Add.cpp" />
+    <ClCompile Include="MyList.Clear.cpp" />
+    <ClCompile Include="MyList.Contains.cpp" />
+    <ClCompile Include="MyList.CopyTo.cpp" />
+    <ClCompile Include="MyList.Ctor.cpp" />
+    <ClCompile Include="MyList.GetEnumerator.cpp" />
+    <ClCompile Include="MyList.Indexer.cpp" />
+    <ClCompile Include="MyList.IndexOf.cpp" />
+    <ClCompile Include="MyList.Insert.cpp" />
+    <ClCompile Include="MyList.Remove.cpp" />
+    <ClCompile Include="MyList.RemoveAt.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

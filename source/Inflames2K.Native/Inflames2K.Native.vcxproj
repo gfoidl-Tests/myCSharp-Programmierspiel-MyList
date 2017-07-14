@@ -142,7 +142,6 @@
     <ClInclude Include="ListItem.h" />
     <ClInclude Include="MyList.h" />
     <ClInclude Include="MyListEnumerator.h" />
-    <ClInclude Include="Tuple.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

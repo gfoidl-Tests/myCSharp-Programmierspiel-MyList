@@ -18,9 +18,6 @@
     <ClInclude Include="ListItem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Tuple.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="MyList.h">
       <Filter>Header Files</Filter>
     </ClInclude>

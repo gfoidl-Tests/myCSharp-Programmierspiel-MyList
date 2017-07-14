@@ -33,12 +33,14 @@ namespace Inflames2K
 	template<typename T>
 	T MyListEnumerator<T>::Current()
 	{
-		return _current != NULL ? _current->Value : NULL;
+		return _current != NULL ? _current->Value : T();
 	}
 	//-------------------------------------------------------------------------
 	template<typename T>
 	bool MyListEnumerator<T>::MoveNext()
 	{
+		if (_first == _tail)return false;
+
 		if (_current == NULL)
 		{
 			_current = _first;

@@ -2,7 +2,7 @@
 
 namespace Inflames2KNativeTests
 {
-	TEST_CLASS(Ctor)
+	TEST_CLASS(ListItem_Ctor)
 	{
 	public:
 		TEST_METHOD(Value_given___Value_set)
