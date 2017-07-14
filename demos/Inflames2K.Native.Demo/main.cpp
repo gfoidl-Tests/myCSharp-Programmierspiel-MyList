@@ -12,12 +12,21 @@ int main()
 	list.Add(4);
 	list.Add(1);
 
+	cout << endl;
+	cout << list[0] << endl;
+	cout << list[1] << endl;
+	cout << list[2] << endl;
+
+	cout << endl;
+
 	auto enumerator = list.GetEnumerator();
 	while (enumerator->MoveNext())
 	{
 		cout << enumerator->Current() << endl;
 	}
 	delete enumerator;
+
+	cout << endl;
 
 	list.Clear();
 	list.Add(42);
