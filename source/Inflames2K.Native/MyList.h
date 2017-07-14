@@ -28,6 +28,7 @@ namespace Inflames2K
 		MyList();
 		~MyList();
 		T getItem(const uint index);
+		T operator[](const uint index) { return this->getItem(index); }
 		void setItem(const uint index, const T& value);
 		uint Count;
 		bool IsReadOnly() { return false; }

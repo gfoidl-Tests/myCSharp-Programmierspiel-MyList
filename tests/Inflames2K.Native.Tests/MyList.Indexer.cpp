@@ -30,7 +30,7 @@ namespace Inflames2KNativeTests
 			sut.Add(2);
 			sut.Add(3);
 
-			int actual = sut.getItem(0);
+			int actual = sut[0];
 
 			Assert::AreEqual(1, actual);
 		}
