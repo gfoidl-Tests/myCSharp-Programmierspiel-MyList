@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\ListItemTests">
+      <UniqueIdentifier>{650370d9-707d-4792-aba6-12bea7950b0f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\MyListTests">
+      <UniqueIdentifier>{58bacf83-30a6-462d-bd78-39aadfee4c01}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ListItem.Ctor.cpp">
+      <Filter>Source Files\ListItemTests</Filter>
+    </ClCompile>
+    <ClCompile Include="MyList.Ctor.cpp">
+      <Filter>Source Files\MyListTests</Filter>
+    </ClCompile>
+    <ClCompile Include="MyList.Add.cpp">
+      <Filter>Source Files\MyListTests</Filter>
+    </ClCompile>
+    <ClCompile Include="MyList.Clear.cpp">
+      <Filter>Source Files\MyListTests</Filter>
+    </ClCompile>
+    <ClCompile Include="MyList.Contains.cpp">
+      <Filter>Source Files\MyListTests</Filter>
+    </ClCompile>
+    <ClCompile Include="MyList.CopyTo.cpp">
+      <Filter>Source Files\MyListTests</Filter>
+    </ClCompile>
+    <ClCompile Include="MyList.GetEnumerator.cpp">
+      <Filter>Source Files\MyListTests</Filter>
+    </ClCompile>
+    <ClCompile Include="MyList.Indexer.cpp">
+      <Filter>Source Files\MyListTests</Filter>
+    </ClCompile>
+    <ClCompile Include="MyList.IndexOf.cpp">
+      <Filter>Source Files\MyListTests</Filter>
+    </ClCompile>
+    <ClCompile Include="MyList.Insert.cpp">
+      <Filter>Source Files\MyListTests</Filter>
+    </ClCompile>
+    <ClCompile Include="MyList.Remove.cpp">
+      <Filter>Source Files\MyListTests</Filter>
+    </ClCompile>
+    <ClCompile Include="MyList.RemoveAt.cpp">
+      <Filter>Source Files\MyListTests</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

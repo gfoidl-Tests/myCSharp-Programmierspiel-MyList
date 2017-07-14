@@ -1,7 +1,17 @@
 version: 1.0.{build}
 image: Visual Studio 2017
+configuration:
+- Debug
+- Release
+platform: x86
 clone_depth: 1
 before_build:
 - cmd: nuget restore
 build:
+  parallel: true
   verbosity: minimal
+test_script:
+- cmd: >-
+    nunit3-console tests\Inflames2K.Tests\bin\%configuration%\Inflames2K.Tests.dll
+
+    vstest.console.exe %configuration%\Inflames2K.Native.Tests.dll
