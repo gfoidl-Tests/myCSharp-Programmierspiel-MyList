@@ -32,7 +32,7 @@ namespace Inflames2K
 		void setItem(const uint index, const T& value);
 		uint Count;
 		bool IsReadOnly() { return false; }
-		void Add(const T value) { this->InsertInternal(value, _tail); }
+		void Add(const T& value) { this->InsertInternal(value, _tail); }
 		void Clear();
 		bool Contains(const T& item) { return (this->IndexOf(item)) >= 0; }
 		void CopyTo(T* array, const uint arrayIndex);
@@ -46,7 +46,7 @@ namespace Inflames2K
 		ListItem<T>* _head;
 		ListItem<T>* _tail;
 
-		void InsertInternal(const T value, ListItem<T>* rightElement);
+		void InsertInternal(const T& value, ListItem<T>* rightElement);
 		ListItem<T>* GetItemInternal(uint index);
 		Tuple<T>* GetItemInternal(const T& item);
 		bool RemoveInternal(ListItem<T>* item);
@@ -164,7 +164,7 @@ namespace Inflames2K
 	}
 	//-------------------------------------------------------------------------
 	template<typename T>
-	void MyList<T>::InsertInternal(const T value, ListItem<T>* rightElement)
+	void MyList<T>::InsertInternal(const T& value, ListItem<T>* rightElement)
 	{
 		ListItem<T>* toInsert = new ListItem<T>(value);
 

@@ -59,5 +59,19 @@ namespace Inflames2KNativeTests
 			Assert::AreEqual(1, sut.getItem(1));
 			Assert::AreEqual(42, sut.getItem(2));
 		}
+		//---------------------------------------------------------------------
+		TEST_METHOD(Issue_3_Insert_two_elements___OK)
+		{
+			MyList<int> sut;
+			sut.Add(1);
+
+			sut.Insert(0, 40);
+			sut.Insert(0, 41);
+
+			Assert::AreEqual(3u, sut.Count);
+			Assert::AreEqual(41, sut[0]);
+			Assert::AreEqual(40, sut[1]);
+			Assert::AreEqual(1, sut[2]);
+		}
 	};
 }
