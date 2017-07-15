@@ -27,24 +27,26 @@ namespace Inflames2K
 	class MyList
 	{
 	public:
+		typedef std::unique_ptr<MyListEnumerator<T>> Iterator;
+
 		MyList();
 		~MyList();
 
-		T 					 getItem	  (const uint index);
-		T 					 operator[]	  (const uint index) 				{ return this->getItem(index); }
-		void 				 setItem	  (const uint index, const T& value);
-		uint 				 Count		  () 				 				{ return _count; }
-		bool 				 IsReadOnly	  () 				 				{ return false; }
-		void 				 Add		  (const T& value) 	 				{ this->InsertInternal(value, _tail); }
-		void 				 Clear		  ();
-		bool 				 Contains	  (const T& item) 					{ return (this->IndexOf(item)) >= 0; }
-		void 				 CopyTo		  (T* array, const uint arrayIndex);
-		void 				 CopyTo		  (std::vector<T> vector);
-		MyListEnumerator<T>* GetEnumerator() 				 				{ return new MyListEnumerator<T>(_head->Next, _tail); }
-		int 				 IndexOf	  (const T& item);
-		void 				 Insert		  (const uint index, const T& item);
-		bool 				 Remove		  (const T& item);
-		void 				 RemoveAt	  (const uint index);
+		T 	 	 getItem	  (const uint index);
+		T 	 	 operator[]	  (const uint index) 				{ return this->getItem(index); }
+		void  	 setItem	  (const uint index, const T& value);
+		uint  	 Count		  () 				 				{ return _count; }
+		bool  	 IsReadOnly	  () 				 				{ return false; }
+		void  	 Add		  (const T& value) 	 				{ this->InsertInternal(value, _tail); }
+		void  	 Clear		  ();
+		bool  	 Contains	  (const T& item) 					{ return (this->IndexOf(item)) >= 0; }
+		void  	 CopyTo		  (T* array, const uint arrayIndex);
+		void  	 CopyTo		  (std::vector<T> vector);
+		Iterator GetEnumerator() 								{ return std::make_unique<MyListEnumerator<T>>(_head->Next, _tail); }
+		int  	 IndexOf	  (const T& item);
+		void 	 Insert		  (const uint index, const T& item);
+		bool 	 Remove		  (const T& item);
+		void 	 RemoveAt	  (const uint index);
 	//-------------------------------------------------------------------------
 	private:
 		uint 		 _count;

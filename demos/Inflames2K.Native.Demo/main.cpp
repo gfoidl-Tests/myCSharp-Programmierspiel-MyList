@@ -24,7 +24,6 @@ int main()
 	{
 		cout << enumerator->Current() << endl;
 	}
-	delete enumerator;
 
 	cout << endl;
 
@@ -37,5 +36,4 @@ int main()
 	{
 		cout << enumerator->Current() << endl;
 	}
-	delete enumerator;
 }
