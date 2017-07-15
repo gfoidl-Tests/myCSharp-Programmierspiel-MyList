@@ -1,6 +1,7 @@
 #pragma once
 
 #include <stdexcept>
+#include <memory>
 #include "ListItem.h"
 #include "MyListEnumerator.h"
 
@@ -49,7 +50,7 @@ namespace Inflames2K
 
 		void InsertInternal(const T& value, ListItem<T>* rightElement);
 		ListItem<T>* GetItemInternal(uint index);
-		Tuple<T>* GetItemInternal(const T& item);
+		std::unique_ptr<Tuple<T>> GetItemInternal(const T& item);
 		bool RemoveInternal(ListItem<T>* item);
 	};
 	//-------------------------------------------------------------------------
@@ -127,12 +128,9 @@ namespace Inflames2K
 	template<typename T>
 	int MyList<T>::IndexOf(const T& item)
 	{
-		Tuple<T>* tuple = this->GetItemInternal(item);
-		int index = tuple->Index;
+		std::unique_ptr<Tuple<T>> tuple = this->GetItemInternal(item);
 
-		delete tuple;
-
-		return index;
+		return tuple->Index;
 	}
 	//-------------------------------------------------------------------------
 	template<typename T>
@@ -151,12 +149,9 @@ namespace Inflames2K
 	template<typename T>
 	bool MyList<T>::Remove(const T& value)
 	{
-		Tuple<T>* tuple = this->GetItemInternal(value);
-		ListItem<T>* item = tuple->Item;
+		std::unique_ptr<Tuple<T>> tuple = this->GetItemInternal(value);
 
-		delete tuple;
-
-		return this->RemoveInternal(item);
+		return this->RemoveInternal(tuple->Item);
 	}
 	//-------------------------------------------------------------------------
 	template<typename T>
@@ -206,16 +201,16 @@ namespace Inflames2K
 	}
 	//-------------------------------------------------------------------------
 	template<typename T>
-	Tuple<T>* MyList<T>::GetItemInternal(const T& item)
+	std::unique_ptr<Tuple<T>> MyList<T>::GetItemInternal(const T& item)
 	{
 		ListItem<T>* current = _head->Next;
 		int index = 0;
 
 		for (; current != _tail; current = current->Next, ++index)
 			if (current->Value == item)
-				return new Tuple<T>(current, index);
+				return std::make_unique<Tuple<T>>(current, index);
 
-		return new Tuple<T>(NULL, -1);
+		return std::make_unique<Tuple<T>>(nullptr, -1);
 	}
 	//-------------------------------------------------------------------------
 	template<typename T>
