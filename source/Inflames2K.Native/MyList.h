@@ -151,7 +151,10 @@ namespace Inflames2K
 	template<typename T>
 	bool MyList<T>::Remove(const T& value)
 	{
-		ListItem<T>* item = (this->GetItemInternal(value))->Item;
+		Tuple<T>* tuple = this->GetItemInternal(value);
+		ListItem<T>* item = tuple->Item;
+
+		delete tuple;
 
 		return this->RemoveInternal(item);
 	}
