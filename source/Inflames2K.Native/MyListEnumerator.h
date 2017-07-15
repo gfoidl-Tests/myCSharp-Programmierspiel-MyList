@@ -23,17 +23,17 @@ namespace Inflames2K
 	template<typename T>
 	MyListEnumerator<T>::MyListEnumerator(ListItem<T>* first, ListItem<T>* tail)
 	{
-		if (first == NULL) throw std::invalid_argument("First must not be null");
+		if (first == nullptr) throw std::invalid_argument("First must not be null");
 
 		_first = first;
-		_current = NULL;
+		_current = nullptr;
 		_tail = tail;
 	}
 	//-------------------------------------------------------------------------
 	template<typename T>
 	T MyListEnumerator<T>::Current()
 	{
-		return _current != NULL ? _current->Value : T();
+		return _current != nullptr ? _current->Value : T();
 	}
 	//-------------------------------------------------------------------------
 	template<typename T>
@@ -41,7 +41,7 @@ namespace Inflames2K
 	{
 		if (_first == _tail)return false;
 
-		if (_current == NULL)
+		if (_current == nullptr)
 		{
 			_current = _first;
 			return true;
@@ -57,6 +57,6 @@ namespace Inflames2K
 	template<typename T>
 	void MyListEnumerator<T>::Reset()
 	{
-		_current = NULL;
+		_current = nullptr;
 	}
 }

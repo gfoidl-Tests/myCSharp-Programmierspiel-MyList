@@ -11,8 +11,8 @@ namespace Inflames2K
 
 		ListItem(const T value) : Value(value)
 		{
-			this->Previous = NULL;
-			this->Next = NULL;
+			this->Previous = nullptr;
+			this->Next = nullptr;
 		}
 	};
 }

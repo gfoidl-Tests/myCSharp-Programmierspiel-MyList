@@ -104,7 +104,7 @@ namespace Inflames2K
 	{
 		ListItem<T>* current = _head->Next;
 
-		while (current != NULL && current->Next != NULL)
+		while (current != nullptr && current->Next != nullptr)
 		{
 			ListItem<T>* next = current->Next;
 			delete current;
@@ -136,7 +136,7 @@ namespace Inflames2K
 	template<typename T>
 	void MyList<T>::Insert(const uint index, const T& item)
 	{
-		ListItem<T>* rightElement = NULL;
+		ListItem<T>* rightElement = nullptr;
 
 		if (index == _count)
 			rightElement = _tail;
@@ -180,7 +180,7 @@ namespace Inflames2K
 	{
 		if (index >= _count) throw std::invalid_argument("Index out of range");
 
-		ListItem<T>* current = NULL;
+		ListItem<T>* current = nullptr;
 
 		if (index < _count / 2)
 		{
@@ -216,7 +216,7 @@ namespace Inflames2K
 	template<typename T>
 	bool MyList<T>::RemoveInternal(ListItem<T>* item)
 	{
-		if (item == NULL) return false;
+		if (item == nullptr) return false;
 
 		item->Previous->Next = item->Next;
 		item->Next->Previous = item->Previous;
