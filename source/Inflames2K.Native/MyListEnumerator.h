@@ -10,7 +10,8 @@ namespace Inflames2K
 	{
 	public:
 		MyListEnumerator(ListItem<T>* first, ListItem<T>* tail);
-		T Current();
+		
+		T 	 Current();
 		bool MoveNext();
 		void Reset();
 	//-------------------------------------------------------------------------
@@ -25,9 +26,9 @@ namespace Inflames2K
 	{
 		if (first == nullptr) throw std::invalid_argument("First must not be null");
 
-		_first = first;
+		_first 	 = first;
 		_current = nullptr;
-		_tail = tail;
+		_tail 	 = tail;
 	}
 	//-------------------------------------------------------------------------
 	template<typename T>

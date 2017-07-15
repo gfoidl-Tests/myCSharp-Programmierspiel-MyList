@@ -14,11 +14,11 @@ namespace Inflames2K
 	struct Tuple
 	{
 		ListItem<T>* Item;
-		int Index;
+		int 		 Index;
 
 		Tuple(ListItem<T>* item, const int index)
 		{
-			this->Item = item;
+			this->Item 	= item;
 			this->Index = index;
 		}
 	};
@@ -29,31 +29,32 @@ namespace Inflames2K
 	public:
 		MyList();
 		~MyList();
-		T getItem(const uint index);
-		T operator[](const uint index) { return this->getItem(index); }
-		void setItem(const uint index, const T& value);
-		uint Count() { return _count; }
-		bool IsReadOnly() { return false; }
-		void Add(const T& value) { this->InsertInternal(value, _tail); }
-		void Clear();
-		bool Contains(const T& item) { return (this->IndexOf(item)) >= 0; }
-		void CopyTo(T* array, const uint arrayIndex);
-		void CopyTo(std::vector<T> vector);
-		MyListEnumerator<T>* GetEnumerator() { return new MyListEnumerator<T>(_head->Next, _tail); }
-		int IndexOf(const T& item);
-		void Insert(const uint index, const T& item);
-		bool Remove(const T& item);
-		void RemoveAt(const uint index);
+
+		T 					 getItem	  (const uint index);
+		T 					 operator[]	  (const uint index) 				{ return this->getItem(index); }
+		void 				 setItem	  (const uint index, const T& value);
+		uint 				 Count		  () 				 				{ return _count; }
+		bool 				 IsReadOnly	  () 				 				{ return false; }
+		void 				 Add		  (const T& value) 	 				{ this->InsertInternal(value, _tail); }
+		void 				 Clear		  ();
+		bool 				 Contains	  (const T& item) 					{ return (this->IndexOf(item)) >= 0; }
+		void 				 CopyTo		  (T* array, const uint arrayIndex);
+		void 				 CopyTo		  (std::vector<T> vector);
+		MyListEnumerator<T>* GetEnumerator() 				 				{ return new MyListEnumerator<T>(_head->Next, _tail); }
+		int 				 IndexOf	  (const T& item);
+		void 				 Insert		  (const uint index, const T& item);
+		bool 				 Remove		  (const T& item);
+		void 				 RemoveAt	  (const uint index);
 	//-------------------------------------------------------------------------
 	private:
-		uint _count;
+		uint 		 _count;
 		ListItem<T>* _head;
 		ListItem<T>* _tail;
 
-		void InsertInternal(const T& value, ListItem<T>* rightElement);
-		ListItem<T>* GetItemInternal(uint index);
+		void 					  InsertInternal (const T& value, ListItem<T>* rightElement);
+		ListItem<T>* 			  GetItemInternal(uint index);
 		std::unique_ptr<Tuple<T>> GetItemInternal(const T& item);
-		bool RemoveInternal(ListItem<T>* item);
+		bool 					  RemoveInternal (ListItem<T>* item);
 	};
 	//-------------------------------------------------------------------------
 	template<typename T>
@@ -89,14 +90,13 @@ namespace Inflames2K
 	{
 		if (index > _count) throw std::invalid_argument("Index out of range");
 
-		ListItem<T>* item = this->GetItemInternal(index);
-
+		ListItem<T>* item 	 = this->GetItemInternal(index);
 		ListItem<T>* newItem = new ListItem<T>(value);
 
 		item->Previous->Next = newItem;
 		item->Next->Previous = newItem;
-		newItem->Previous = item->Previous;
-		newItem->Next = item->Next;
+		newItem->Previous 	 = item->Previous;
+		newItem->Next 		 = item->Next;
 
 		delete item;
 	}
@@ -113,9 +113,9 @@ namespace Inflames2K
 			current = next;
 		}
 
-		_head->Next = _tail;
+		_head->Next 	= _tail;
 		_tail->Previous = _head;
-		_count = 0;
+		_count 			= 0;
 	}
 	//-------------------------------------------------------------------------
 	template<typename T>
@@ -176,10 +176,10 @@ namespace Inflames2K
 	{
 		ListItem<T>* toInsert = new ListItem<T>(value);
 
-		toInsert->Previous = rightElement->Previous;
-		toInsert->Next = rightElement;
+		toInsert->Previous 			 = rightElement->Previous;
+		toInsert->Next 				 = rightElement;
 		rightElement->Previous->Next = toInsert;
-		rightElement->Previous = toInsert;
+		rightElement->Previous 		 = toInsert;
 
 		_count++;
 	}
@@ -213,7 +213,7 @@ namespace Inflames2K
 	std::unique_ptr<Tuple<T>> MyList<T>::GetItemInternal(const T& item)
 	{
 		ListItem<T>* current = _head->Next;
-		int index = 0;
+		int index 			 = 0;
 
 		for (; current != _tail; current = current->Next, ++index)
 			if (current->Value == item)

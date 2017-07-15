@@ -5,14 +5,14 @@ namespace Inflames2K
 	template <typename T>
 	struct ListItem
 	{
-		const T Value;
+		const 	  T Value;
 		ListItem* Previous;
 		ListItem* Next;
 
 		ListItem(const T value) : Value(value)
 		{
 			this->Previous = nullptr;
-			this->Next = nullptr;
+			this->Next 	   = nullptr;
 		}
 	};
 }
