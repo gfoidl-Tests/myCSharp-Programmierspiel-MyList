@@ -2,6 +2,7 @@
 
 #include <stdexcept>
 #include <memory>
+#include <vector>
 #include "ListItem.h"
 #include "MyListEnumerator.h"
 
@@ -37,6 +38,7 @@ namespace Inflames2K
 		void Clear();
 		bool Contains(const T& item) { return (this->IndexOf(item)) >= 0; }
 		void CopyTo(T* array, const uint arrayIndex);
+		void CopyTo(std::vector<T> vector);
 		MyListEnumerator<T>* GetEnumerator() { return new MyListEnumerator<T>(_head->Next, _tail); }
 		int IndexOf(const T& item);
 		void Insert(const uint index, const T& item);
@@ -123,6 +125,13 @@ namespace Inflames2K
 
 		for (ListItem<T>* current = _head->Next; current != _tail; current = current->Next)
 			array[i++] = current->Value;
+	}
+	//-------------------------------------------------------------------------
+	template<typename T>
+	inline void MyList<T>::CopyTo(std::vector<T> vector)
+	{
+		for (ListItem<T>* current = _head->Next; current != _tail; current = current->Next)
+			vector.push_back(current->Value);
 	}
 	//-------------------------------------------------------------------------
 	template<typename T>
