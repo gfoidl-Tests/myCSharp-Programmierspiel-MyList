@@ -11,7 +11,7 @@ namespace Inflames2KNativeTests
 
 			sut.Insert(0, 42);
 
-			Assert::AreEqual(1u, sut.Count);
+			Assert::AreEqual(1u, sut.Count());
 			Assert::AreEqual(42, sut.getItem(0));
 		}
 		//---------------------------------------------------------------------
@@ -40,7 +40,7 @@ namespace Inflames2KNativeTests
 
 			sut.Insert(1, 42);
 
-			Assert::AreEqual(3u, sut.Count);
+			Assert::AreEqual(3u, sut.Count());
 			Assert::AreEqual(2, sut.getItem(0));
 			Assert::AreEqual(42, sut.getItem(1));
 			Assert::AreEqual(1, sut.getItem(2));
@@ -54,7 +54,7 @@ namespace Inflames2KNativeTests
 
 			sut.Insert(2, 42);
 
-			Assert::AreEqual(3u, sut.Count);
+			Assert::AreEqual(3u, sut.Count());
 			Assert::AreEqual(2, sut.getItem(0));
 			Assert::AreEqual(1, sut.getItem(1));
 			Assert::AreEqual(42, sut.getItem(2));
@@ -68,7 +68,7 @@ namespace Inflames2KNativeTests
 			sut.Insert(0, 40);
 			sut.Insert(0, 41);
 
-			Assert::AreEqual(3u, sut.Count);
+			Assert::AreEqual(3u, sut.Count());
 			Assert::AreEqual(41, sut[0]);
 			Assert::AreEqual(40, sut[1]);
 			Assert::AreEqual(1, sut[2]);

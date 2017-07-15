@@ -26,7 +26,7 @@ namespace Inflames2KNativeTests
 			sut.Add(2);
 			sut.Add(1);
 
-			Assert::AreEqual(2u, sut.Count);
+			Assert::AreEqual(2u, sut.Count());
 
 			const int N = 100;
 			int arr[N];

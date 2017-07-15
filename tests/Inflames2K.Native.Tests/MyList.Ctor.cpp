@@ -9,7 +9,7 @@ namespace Inflames2KNativeTests
 		{
 			MyList<object> sut;
 
-			Assert::AreEqual(0u, sut.Count);
+			Assert::AreEqual(0u, sut.Count());
 		}
 		//---------------------------------------------------------------------
 		TEST_METHOD(IsReadOnly_is_false)

@@ -12,7 +12,7 @@ namespace Inflames2KNativeTests
 			sut.Add(1);
 			sut.Add(2);
 
-			Assert::AreEqual(3u, sut.Count);
+			Assert::AreEqual(3u, sut.Count());
 
 			auto it = sut.GetEnumerator();
 
@@ -34,7 +34,7 @@ namespace Inflames2KNativeTests
 		{
 			MyList<int> sut;
 
-			Assert::AreEqual(0u, sut.Count);
+			Assert::AreEqual(0u, sut.Count());
 
 			auto it = sut.GetEnumerator();
 

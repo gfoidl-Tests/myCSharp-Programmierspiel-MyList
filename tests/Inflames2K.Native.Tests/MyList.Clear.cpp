@@ -12,11 +12,11 @@ namespace Inflames2KNativeTests
 			sut.Add(1);
 			sut.Add(2);
 
-			Assert::AreEqual(2u, sut.Count);
+			Assert::AreEqual(2u, sut.Count());
 
 			sut.Clear();
 
-			Assert::AreEqual(0u, sut.Count);
+			Assert::AreEqual(0u, sut.Count());
 		}
 	};
 }

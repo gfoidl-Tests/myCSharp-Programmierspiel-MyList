@@ -20,7 +20,7 @@ namespace Inflames2KNativeTests
 			sut.Add(1);
 			sut.Add(2);
 
-			Assert::AreEqual(2u, sut.Count);
+			Assert::AreEqual(2u, sut.Count());
 
 			bool actual = sut.Contains(1);
 
@@ -33,7 +33,7 @@ namespace Inflames2KNativeTests
 			sut.Add(1);
 			sut.Add(2);
 
-			Assert::AreEqual(2u, sut.Count);
+			Assert::AreEqual(2u, sut.Count());
 
 			bool actual = sut.Contains(-1);
 

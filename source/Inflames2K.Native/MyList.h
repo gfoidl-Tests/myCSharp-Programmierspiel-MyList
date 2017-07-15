@@ -30,7 +30,7 @@ namespace Inflames2K
 		T getItem(const uint index);
 		T operator[](const uint index) { return this->getItem(index); }
 		void setItem(const uint index, const T& value);
-		uint Count;
+		uint Count() { return _count; }
 		bool IsReadOnly() { return false; }
 		void Add(const T& value) { this->InsertInternal(value, _tail); }
 		void Clear();
@@ -43,6 +43,7 @@ namespace Inflames2K
 		void RemoveAt(const uint index);
 	//-------------------------------------------------------------------------
 	private:
+		uint _count;
 		ListItem<T>* _head;
 		ListItem<T>* _tail;
 
@@ -73,7 +74,7 @@ namespace Inflames2K
 	template<typename T>
 	T MyList<T>::getItem(const uint index)
 	{
-		if (index > this->Count) throw std::invalid_argument("Index out of range");
+		if (index > _count) throw std::invalid_argument("Index out of range");
 
 		ListItem<T>* item = this->GetItemInternal(index);
 
@@ -83,7 +84,7 @@ namespace Inflames2K
 	template<typename T>
 	void MyList<T>::setItem(const uint index, const T& value)
 	{
-		if (index > this->Count) throw std::invalid_argument("Index out of range");
+		if (index > _count) throw std::invalid_argument("Index out of range");
 
 		ListItem<T>* item = this->GetItemInternal(index);
 
@@ -111,7 +112,7 @@ namespace Inflames2K
 
 		_head->Next = _tail;
 		_tail->Previous = _head;
-		this->Count = 0;
+		_count = 0;
 	}
 	//-------------------------------------------------------------------------
 	template<typename T>
@@ -139,7 +140,7 @@ namespace Inflames2K
 	{
 		ListItem<T>* rightElement = NULL;
 
-		if (index == this->Count)
+		if (index == _count)
 			rightElement = _tail;
 		else
 			rightElement = this->GetItemInternal(index);
@@ -173,17 +174,17 @@ namespace Inflames2K
 		rightElement->Previous->Next = toInsert;
 		rightElement->Previous = toInsert;
 
-		this->Count++;
+		_count++;
 	}
 	//-------------------------------------------------------------------------
 	template<typename T>
 	ListItem<T>* MyList<T>::GetItemInternal(const uint index)
 	{
-		if (index >= this->Count) throw std::invalid_argument("Index out of range");
+		if (index >= _count) throw std::invalid_argument("Index out of range");
 
 		ListItem<T>* current = NULL;
 
-		if (index < this->Count / 2)
+		if (index < _count / 2)
 		{
 			current = _head->Next;
 
@@ -194,7 +195,7 @@ namespace Inflames2K
 		{
 			current = _tail->Previous;
 
-			for (uint i = this->Count - 1; i > index; --i)
+			for (uint i = _count - 1; i > index; --i)
 				current = current->Previous;
 		}
 
@@ -221,7 +222,7 @@ namespace Inflames2K
 
 		item->Previous->Next = item->Next;
 		item->Next->Previous = item->Previous;
-		this->Count--;
+		_count--;
 
 		delete item;
 

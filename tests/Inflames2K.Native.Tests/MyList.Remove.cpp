@@ -24,7 +24,7 @@ namespace Inflames2KNativeTests
 			bool actual = sut.Remove(2);
 
 			Assert::IsTrue(actual);
-			Assert::AreEqual(2u, sut.Count);
+			Assert::AreEqual(2u, sut.Count());
 			Assert::AreEqual(1, sut.getItem(0));
 			Assert::AreEqual(3, sut.getItem(1));
 		}
@@ -39,7 +39,7 @@ namespace Inflames2KNativeTests
 			bool actual = sut.Remove(1);
 
 			Assert::IsTrue(actual);
-			Assert::AreEqual(2u, sut.Count);
+			Assert::AreEqual(2u, sut.Count());
 			Assert::AreEqual(2, sut.getItem(0));
 			Assert::AreEqual(3, sut.getItem(1));
 		}
@@ -54,7 +54,7 @@ namespace Inflames2KNativeTests
 			bool actual = sut.Remove(3);
 
 			Assert::IsTrue(actual);
-			Assert::AreEqual(2u, sut.Count);
+			Assert::AreEqual(2u, sut.Count());
 			Assert::AreEqual(1, sut.getItem(0));
 			Assert::AreEqual(2, sut.getItem(1));
 		}

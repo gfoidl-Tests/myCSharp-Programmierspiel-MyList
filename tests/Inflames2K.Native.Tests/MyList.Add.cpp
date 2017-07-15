@@ -9,11 +9,11 @@ namespace Inflames2KNativeTests
 		{
 			MyList<object> sut;
 
-			Assert::AreEqual(0u, sut.Count);
+			Assert::AreEqual(0u, sut.Count());
 
 			sut.Add(object());
 
-			Assert::AreEqual(1u, sut.Count);
+			Assert::AreEqual(1u, sut.Count());
 		}
 		//---------------------------------------------------------------------
 		TEST_METHOD(Two_items_added___Retrieving_via_indexer_OK)
@@ -23,7 +23,7 @@ namespace Inflames2KNativeTests
 			sut.Add(1);
 			sut.Add(2);
 
-			Assert::AreEqual(2u, sut.Count);
+			Assert::AreEqual(2u, sut.Count());
 			Assert::AreEqual(1, sut.getItem(0));
 			Assert::AreEqual(2, sut.getItem(1));
 		}
