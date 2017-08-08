@@ -1,63 +1,72 @@
-###############################################################################
-# Set default behavior to automatically normalize line endings.
-###############################################################################
+#------------------------------------------------------------------------------
+# L I N E   E N D I N G S
+
+# Set the default behavior, in case people don't have core.autocrlf set.
 * text=auto
 
-###############################################################################
-# Set default behavior for command prompt diff.
-#
-# This is need for earlier builds of msysgit that does not have it on by
-# default for csharp files.
-# Note: This is only used by command line
-###############################################################################
-#*.cs     diff=csharp
+# Must keep LF line ending
+Dockerfile          text eol=lf
+.dockerignore       text eol=lf
 
-###############################################################################
-# Set the merge driver for project and solution files
-#
-# Merging from the command prompt will add diff markers to the files if there
-# are conflicts (Merging from VS is not affected by the settings below, in VS
-# the diff markers are never inserted). Diff markers may cause the following 
-# file extensions to fail to load in VS. An alternative would be to treat
-# these files as binary and thus will always conflict and require user
-# intervention with every merge. To do so, just uncomment the entries below
-###############################################################################
-#*.sln       merge=binary
-#*.csproj    merge=binary
-#*.vbproj    merge=binary
-#*.vcxproj   merge=binary
-#*.vcproj    merge=binary
-#*.dbproj    merge=binary
-#*.fsproj    merge=binary
-#*.lsproj    merge=binary
-#*.wixproj   merge=binary
-#*.modelproj merge=binary
-#*.sqlproj   merge=binary
-#*.wwaproj   merge=binary
+/**/*.sh            text eol=lf
+/**/*.conf          text eol=lf
+/**/*.crontab       text eol=lf
+/**/*.yml           text eol=lf
+#------------------------------------------------------------------------------
+# T A B S   S P A C E S
 
-###############################################################################
-# behavior for image files
-#
-# image files are treated as binary by default.
-###############################################################################
-#*.jpg   binary
-#*.png   binary
-#*.gif   binary
+# Code files
+*.cs                filter=tabs2spaces
+*.c                 filter=tabs2spaces
+*.h                 filter=tabs2spaces
+*.cpp               filter=tabs2spaces
+*.f95               filter=tabs2spaces
+*.f03               filter=tabs2spaces
+*.sql               filter=tabs2spaces
+*.ino               filter=tabs2spaces
 
-###############################################################################
-# diff behavior for common document formats
-# 
-# Convert binary document formats to text before diffing them. This feature
-# is only available from the command line. Turn it on by uncommenting the 
-# entries below.
-###############################################################################
-#*.doc   diff=astextplain
-#*.DOC   diff=astextplain
-#*.docx  diff=astextplain
-#*.DOCX  diff=astextplain
-#*.dot   diff=astextplain
-#*.DOT   diff=astextplain
-#*.pdf   diff=astextplain
-#*.PDF   diff=astextplain
-#*.rtf   diff=astextplain
-#*.RTF   diff=astextplain
+# Project files
+*.sln               filter=tabs2spaces
+*.csproj            filter=tabs2spaces
+*.sqlproj           filter=tabs2spaces
+*.vcxproj           filter=tabs2spaces
+*.proj              filter=tabs2spaces
+*.targets           filter=tabs2spaces
+*.props             filter=tabs2spaces
+*.pubxml            filter=tabs2spaces
+*.config            filter=tabs2spaces
+*.settings          filter=tabs2spaces
+*.nuspec            filter=tabs2spaces
+*.nunit             filter=tabs2spaces
+
+# Web files
+*.cshtml            filter=tabs2spaces
+*.html              filter=tabs2spaces
+*.htm               filter=tabs2spaces
+*.ts                filter=tabs2spaces
+*.js                filter=tabs2spaces
+*.less              filter=tabs2spaces
+*.css               filter=tabs2spaces
+*.json              filter=tabs2spaces
+*.ashx              filter=tabs2spaces
+*.asax              filter=tabs2spaces
+*.svc               filter=tabs2spaces
+
+# Shell files
+*.sh                filter=tabs2spaces
+*.bat               filter=tabs2spaces
+*.ps1               filter=tabs2spaces
+
+# Misc files
+*.xml               filter=tabs2spaces
+*.xsd               filter=tabs2spaces
+*.txt               filter=tabs2spaces
+*.md                filter=tabs2spaces
+*.resx              filter=tabs2spaces
+*.tt                filter=tabs2spaces
+*.edmx              filter=tabs2spaces
+*.svg               filter=tabs2spaces
+*.xaml              filter=tabs2spaces
+*.dbml              filter=tabs2spaces
+*.tex               filter=tabs2spaces
+*.conf              filter=tabs2spaces

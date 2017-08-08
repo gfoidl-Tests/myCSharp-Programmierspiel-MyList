@@ -23,4 +23,4 @@ public interface IList<T> : IEnumerable<T>
 
 ## Folgende Regeln sind zu beachten
 
-Es dürfen weder Arrays noch Collections / Collectionähnliche / Dictionaries / Dictionary-ähnliche Klassen aus dem Framework verwendet werden.
+Es dÃ¼rfen weder Arrays noch Collections / CollectionÃ¤hnliche / Dictionaries / Dictionary-Ã¤hnliche Klassen aus dem Framework verwendet werden.

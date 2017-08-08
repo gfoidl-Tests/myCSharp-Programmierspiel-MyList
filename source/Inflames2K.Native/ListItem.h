@@ -2,17 +2,17 @@
 
 namespace Inflames2K
 {
-	template <typename T>
-	struct ListItem
-	{
-		const 	  T Value;
-		ListItem* Previous;
-		ListItem* Next;
+    template <typename T>
+    struct ListItem
+    {
+        const     T Value;
+        ListItem* Previous;
+        ListItem* Next;
 
-		ListItem(const T value) : Value(value)
-		{
-			this->Previous = nullptr;
-			this->Next 	   = nullptr;
-		}
-	};
+        ListItem(const T value) : Value(value)
+        {
+            this->Previous = nullptr;
+            this->Next     = nullptr;
+        }
+    };
 }
