@@ -1,6 +1,5 @@
 ﻿//#define ELEPHANT
 
-using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -14,19 +13,15 @@ namespace Inflames2K
         //---------------------------------------------------------------------
         public MyList()
         {
-            _head = new ListItem<T>(default(T));
-            _tail = new ListItem<T>(default(T));
+            _head = new ListItem<T>(default);
+            _tail = new ListItem<T>(default);
 
             this.Clear();
         }
         //---------------------------------------------------------------------
         public T this[int index]
         {
-            get
-            {
-                ListItem<T> item = this.GetItemInternal(index);
-                return item.Value;
-            }
+            get => this.GetItemInternal(index);
             set
             {
                 ListItem<T> item = this.GetItemInternal(index);
@@ -34,10 +29,8 @@ namespace Inflames2K
             }
         }
         //---------------------------------------------------------------------
-        public int Count { get { return _count; } }
-        //---------------------------------------------------------------------
-        public bool IsReadOnly { get; } = false;
-        //---------------------------------------------------------------------
+        public int Count         => _count;
+        public bool IsReadOnly   => false;
         public void Add(T value) => this.InsertInternal(value, _tail);
         //---------------------------------------------------------------------
         public void Clear()
@@ -60,6 +53,8 @@ namespace Inflames2K
             for (var current = _head.Next; current != _tail; current = current.Next)
                 yield return current.Value;
         }
+        //---------------------------------------------------------------------
+        IEnumerator IEnumerable.GetEnumerator() => this.GetEnumerator();
         //---------------------------------------------------------------------
         public int IndexOf(T item) => this.GetItemInternal(item).Index;
         //---------------------------------------------------------------------
@@ -87,13 +82,11 @@ namespace Inflames2K
             this.RemoveInternal(item);
         }
         //---------------------------------------------------------------------
-        IEnumerator IEnumerable.GetEnumerator() => this.GetEnumerator();
-        //---------------------------------------------------------------------
         #region Private Members
         private void InsertInternal(T value, ListItem<T> rightElement)
         {
             // null as value is allowed -> consumer has to handle this
-            ListItem<T> toInsert = new ListItem<T>(value);
+            ListItem<T> toInsert = value;
 
             toInsert.Previous          = rightElement.Previous;
             toInsert.Next              = rightElement;
@@ -105,7 +98,8 @@ namespace Inflames2K
         //---------------------------------------------------------------------
         private ListItem<T> GetItemInternal(int index)
         {
-            if (index < 0 || index >= _count) throw new ArgumentOutOfRangeException(nameof(index));
+            if (index < 0 || index >= _count)
+                ThrowHelper.ThrowArgumentOutOfRange(ThrowHelper.ExceptionArgument.index);
 
             ListItem<T> current = null;
 

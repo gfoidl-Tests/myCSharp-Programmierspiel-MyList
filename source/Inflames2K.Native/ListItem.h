@@ -5,7 +5,7 @@ namespace Inflames2K
     template <typename T>
     struct ListItem
     {
-        const     T Value;
+        T         Value;
         ListItem* Previous;
         ListItem* Next;
 

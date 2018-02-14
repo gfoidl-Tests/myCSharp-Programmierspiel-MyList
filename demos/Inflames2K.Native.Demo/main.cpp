@@ -21,9 +21,7 @@ int main()
 
     auto enumerator = list.GetEnumerator();
     while (enumerator->MoveNext())
-    {
         cout << enumerator->Current() << endl;
-    }
 
     cout << endl;
 
@@ -33,7 +31,13 @@ int main()
 
     enumerator = list.GetEnumerator();
     while (enumerator->MoveNext())
-    {
         cout << enumerator->Current() << endl;
-    }
+
+    cout << endl;
+
+    list.setItem(1, 3);
+
+    enumerator = list.GetEnumerator();
+    while (enumerator->MoveNext())
+        cout << enumerator->Current() << endl;
 }

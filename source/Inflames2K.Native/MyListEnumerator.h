@@ -40,7 +40,7 @@ namespace Inflames2K
     template<typename T>
     bool MyListEnumerator<T>::MoveNext()
     {
-        if (_first == _tail)return false;
+        if (_first == _tail) return false;
 
         if (_current == nullptr)
         {

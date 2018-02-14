@@ -32,12 +32,12 @@ namespace Inflames2K
         MyList();
         ~MyList();
 
-        T        getItem      (const uint index);
-        T        operator[]   (const uint index)                { return this->getItem(index); }
-        void     setItem      (const uint index, const T& value);
-        uint     Count        ()                                { return _count; }
-        bool     IsReadOnly   ()                                { return false; }
-        void     Add          (const T& value)                  { this->InsertInternal(value, _tail); }
+        T    getItem          (const uint index);
+        void     setItem          (const uint index, const T& value);
+        T    operator[]   (const uint index)                    { return this->getItem(index); }
+        uint     Count        ()                                    { return _count; }
+        bool     IsReadOnly   ()                                    { return false; }
+        void     Add              (const T& value)                  { this->InsertInternal(value, _tail); }
         void     Clear        ();
         bool     Contains     (const T& item)                   { return (this->IndexOf(item)) >= 0; }
         void     CopyTo       (T* array, const uint arrayIndex);
@@ -53,10 +53,10 @@ namespace Inflames2K
         ListItem<T>* _head;
         ListItem<T>* _tail;
 
-        void                      InsertInternal (const T& value, ListItem<T>* rightElement);
-        ListItem<T>*              GetItemInternal(uint index);
+        void                          InsertInternal (const T& value, ListItem<T>* rightElement);
+        ListItem<T>*                  GetItemInternal(uint index);
         std::unique_ptr<Tuple<T>> GetItemInternal(const T& item);
-        bool                      RemoveInternal (ListItem<T>* item);
+        bool                          RemoveInternal (ListItem<T>* item);
     };
     //-------------------------------------------------------------------------
     template<typename T>
@@ -92,15 +92,8 @@ namespace Inflames2K
     {
         if (index > _count) throw std::invalid_argument("Index out of range");
 
-        ListItem<T>* item    = this->GetItemInternal(index);
-        ListItem<T>* newItem = new ListItem<T>(value);
-
-        item->Previous->Next = newItem;
-        item->Next->Previous = newItem;
-        newItem->Previous    = item->Previous;
-        newItem->Next        = item->Next;
-
-        delete item;
+        ListItem<T>* item = this->GetItemInternal(index);
+        item->Value = value;
     }
     //-------------------------------------------------------------------------
     template<typename T>
