@@ -23,7 +23,7 @@
     <ProjectGuid>{2C35C262-B5F5-4DA0-9406-FC95B0113B96}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>Inflames2KNativeTests</RootNamespace>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
     <ProjectSubType>NativeUnitTestProject</ProjectSubType>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />

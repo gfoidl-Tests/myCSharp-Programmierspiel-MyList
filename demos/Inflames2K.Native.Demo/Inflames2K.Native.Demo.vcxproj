@@ -23,7 +23,7 @@
     <ProjectGuid>{EDE38239-1E43-4D35-A8A2-90B895CB51E2}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>Inflames2KNativeDemo</RootNamespace>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
